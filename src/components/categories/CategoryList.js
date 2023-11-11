@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ListGroup, ListGroupItem } from 'reactstrap';
+import { ListGroup, ListGroupItem, Badge } from 'reactstrap';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actionTypes from '../../redux/actions/categoryActions'
@@ -9,22 +9,27 @@ class CategoryList extends Component {
     this.props.actions.getCategories()
   }
 
+  selectCategory = (category) => {
+    this.props.actions.changeCategory(category)
+  }
+
   render() {
     return (
       <div>
-        <h3>Category List </h3>
-        <h2>Current Category: {this.props.currentCategory.categoryName}</h2>
+        <h2>
+          <Badge color='warning'>Category List</Badge>
+        </h2>
         <ListGroup>
           {this.props.categories.map(category => (
             <ListGroupItem
-              className={category.id === this.props.currentCategoryId ? 'list-group-item-primary' : ''}
+              className={category.id === this.props.currentCategory.id ? 'list-group-item-primary' : ''}
               style={{ cursor: 'pointer' }}
-              key={category.id}>
+              key={category.id}
+              onClick={() => this.selectCategory(category)}>
               {category.name}
             </ListGroupItem>
           ))}
         </ListGroup>
-
       </div >
     )
   }
