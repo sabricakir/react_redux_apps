@@ -1,5 +1,5 @@
 const initialState = {
-  currentCategory: {}
+  currentCategory: { categoryName: "Beverages" },
 }
 
 export default initialState;
