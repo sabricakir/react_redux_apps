@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+import App from './components/root/App';
 import reportWebVitals from './reportWebVitals';
 import configureAppStore from './redux/reducers/configureStore';
 import { Provider } from 'react-redux';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const store = configureAppStore();
 
