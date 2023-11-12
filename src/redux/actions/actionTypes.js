@@ -1,2 +1,3 @@
 export const CHANGE_CATEGORY = "CHANGE_CATEGORY";
 export const GET_CATEGORIES = "GET_CATEGORIES";
+export const GET_PRODUCTS = "GET_PRODUCTS";
