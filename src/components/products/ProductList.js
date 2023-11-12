@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Badge } from 'reactstrap'
 import { bindActionCreators } from 'redux'
-import * as actionTypes from '../../redux/actions/productActions'
+import * as productActionTypes from '../../redux/actions/productActions'
 import { Table, Button } from 'reactstrap'
 
 class ProductList extends Component {
@@ -58,7 +58,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     actions: {
-      getProducts: bindActionCreators(actionTypes.getProducts, dispatch)
+      getProducts: bindActionCreators(productActionTypes.getProducts, dispatch)
     }
   }
 }
