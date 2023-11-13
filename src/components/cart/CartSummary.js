@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as cartActions from '../../redux/actions/cartActions'
 import alertify from 'alertifyjs';
+import { Link } from 'react-router-dom';
 
 class CartSummary extends Component {
   state = {
@@ -50,6 +51,7 @@ class CartSummary extends Component {
           ))}
           <DropdownItem divider />
           <DropdownItem>
+            <Link to='/cart' className='text-decoration-none'>Go to cart</Link>
           </DropdownItem>
         </DropdownMenu>
       </Dropdown>

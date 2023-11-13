@@ -7,10 +7,7 @@ export default class Navigation extends Component {
     return (
       <Nav tabs className='d-flex justify-content-end'>
         <NavItem>
-          <NavLink href="#">Link</NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink href="#">Another Link</NavLink>
+          <NavLink href="/">Home</NavLink>
         </NavItem>
         <NavItem>
           <CartSummary />
