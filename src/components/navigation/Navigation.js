@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Nav, NavItem, NavLink } from 'reactstrap'
-import Cart from './Cart'
+import CartSummary from '../cart/CartSummary'
 
 export default class Navigation extends Component {
   render() {
@@ -13,7 +13,7 @@ export default class Navigation extends Component {
           <NavLink href="#">Another Link</NavLink>
         </NavItem>
         <NavItem>
-          <Cart />
+          <CartSummary />
         </NavItem>
       </Nav>
     )

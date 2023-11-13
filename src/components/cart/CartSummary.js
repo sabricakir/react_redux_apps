@@ -1,14 +1,22 @@
 import React, { Component } from 'react'
 import { Dropdown, DropdownMenu, DropdownItem, DropdownToggle, Badge, Button, NavLink } from 'reactstrap';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as cartActions from '../../redux/actions/cartActions'
+import alertify from 'alertifyjs';
 
-class Cart extends Component {
+class CartSummary extends Component {
   state = {
     dropdownOpen: false
   }
 
   toggle = () => {
     this.setState({ dropdownOpen: !this.state.dropdownOpen })
+  }
+
+  removeItemFromCart = (item) => {
+    this.props.actions.removeFromCart({ id: item.product.id })
+    alertify.error(`${item.product.productName} removed from cart!`)
   }
 
   renderEmpty = () => {
@@ -36,7 +44,7 @@ class Cart extends Component {
                 </p>
               </div>
               <div className='ms-2'>
-                <Button color='danger' size='sm'>Remove</Button>
+                <Button color='danger' size='sm' onClick={() => this.removeItemFromCart(item)}>Remove</Button>
               </div>
             </DropdownItem>
           ))}
@@ -62,6 +70,12 @@ function mapStateToProps(state) {
     cart: state.cartReducer
   }
 }
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: {
+      removeFromCart: bindActionCreators(cartActions.removeFromCart, dispatch)
+    }
+  }
+}
 
-
-export default connect(mapStateToProps)(Cart);
+export default connect(mapStateToProps, mapDispatchToProps)(CartSummary);
