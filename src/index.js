@@ -5,6 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import configureAppStore from './redux/reducers/configureStore';
 import { Provider } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'alertifyjs/build/css/alertify.min.css';
 
 const store = configureAppStore();
 

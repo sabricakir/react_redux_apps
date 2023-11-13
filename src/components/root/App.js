@@ -6,8 +6,8 @@ import { Container } from 'reactstrap';
 function App() {
   return (
     <div>
-      <Navigation />
       <Container>
+        <Navigation />
         <Dashboard />
       </Container>
     </div>
