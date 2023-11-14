@@ -6,13 +6,12 @@ import ProductDetail from './ProductDetail';
 import { useParams, useNavigate } from 'react-router-dom';
 
 function SaveProductApi({
-  product,
   products,
   categories,
   getCategories,
   saveProduct,
 }) {
-  const [localProduct, setLocalProduct] = useState({ ...product });
+  const [product, setProduct] = useState({});
   const [errors, setErrors] = useState({});
 
   const productId = useParams().id;
@@ -22,16 +21,17 @@ function SaveProductApi({
     if (!categories.length) {
       getCategories();
     }
-    setLocalProduct(
-      productId && products.length > 0
+
+    setProduct(
+      productId && products.length
         ? getProductById(products, productId)
-        : { ...product }
+        : {}
     );
-  }, [categories, getCategories, product, productId, products]);
+  }, [categories, getCategories, productId, products]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setLocalProduct((prevProduct) => ({
+    setProduct((prevProduct) => ({
       ...prevProduct,
       [name]: name === 'categoryId' ? parseInt(value, 10) : value,
     }));
@@ -55,14 +55,14 @@ function SaveProductApi({
 
   const handleSave = (event) => {
     event.preventDefault();
-    saveProduct(localProduct).then(() => {
+    saveProduct(product).then(() => {
       navigate('/');
     });
   };
 
   return (
     <ProductDetail
-      product={localProduct}
+      product={product}
       categories={categories}
       onChange={handleChange}
       onSave={handleSave}

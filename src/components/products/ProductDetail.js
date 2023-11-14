@@ -4,7 +4,6 @@ import SelectInput from "../toolbox/SelectInput";
 
 const ProductDetail = ({ product, categories, onChange, onSave, errors }) => {
   return (
-    console.log(errors),
     <form onSubmit={onSave}>
       <h2>{product.id ? "Update" : "Add"}</h2>
 
